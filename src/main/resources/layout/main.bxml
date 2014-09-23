@@ -1,0 +1,48 @@
+<main:MainWindow title="Push Buttons" maximized="true"
+                     xmlns:bxml="http://pivot.apache.org/bxml"
+                     xmlns:main="rs.pedjaapps.adam"
+                     xmlns:content="org.apache.pivot.wtk.content"
+                     xmlns="org.apache.pivot.wtk">
+    <TablePane>
+        <columns>
+            <TablePane.Column width="400"/>
+            <TablePane.Column width="-1"/>
+        </columns>
+
+        <TablePane.Row height="-1">
+            <Border styles="{padding:6, color:'#999999'}">
+                <ScrollPane preferredWidth="80" preferredHeight="210"
+                            horizontalScrollBarPolicy="fill"
+                            verticalScrollBarPolicy="fill_to_capacity">
+                    <ListView bxml:id="listView" selectMode="multi"/>
+                </ScrollPane>
+            </Border>
+
+            <BoxPane orientation="vertical" styles="{padding:6, spacing:8, fill:true}">
+                <bxml:define>
+                    <ButtonGroup bxml:id="orientation"/>
+                    <ButtonGroup bxml:id="horizontalAlignment"/>
+                    <ButtonGroup bxml:id="verticalAlignment"/>
+                </bxml:define>
+
+                <Label text="Orientation" styles="{font:{bold:true}}"/>
+                <RadioButton bxml:id="horizontalOrientationButton" buttonData="Horizontal" buttonGroup="$orientation" selected="true"/>
+                <RadioButton bxml:id="verticalOrientationButton" buttonData="Vertical" buttonGroup="$orientation"/>
+
+                <Label text="Horizontal Alignment" styles="{font:{bold:true}}"/>
+                <RadioButton bxml:id="horizontalAlignmentLeftButton" buttonData="Left" buttonGroup="$horizontalAlignment" selected="true"/>
+                <RadioButton bxml:id="horizontalAlignmentRightButton" buttonData="Right" buttonGroup="$horizontalAlignment"/>
+                <RadioButton bxml:id="horizontalAlignmentCenterButton" buttonData="Center" buttonGroup="$horizontalAlignment"/>
+
+                <Label text="Vertical Alignment" styles="{font:{bold:true}}"/>
+                <RadioButton bxml:id="verticalAlignmentTopButton" buttonData="Top" buttonGroup="$verticalAlignment" selected="true"/>
+                <RadioButton bxml:id="verticalAlignmentBottomButton" buttonData="Bottom" buttonGroup="$verticalAlignment"/>
+                <RadioButton bxml:id="verticalAlignmentCenterButton" buttonData="Center" buttonGroup="$verticalAlignment"/>
+
+                <BoxPane styles="{padding:{top:8}}">
+                    <Checkbox bxml:id="fillCheckbox" buttonData="Fill"/>
+                </BoxPane>
+            </BoxPane>
+        </TablePane.Row>
+    </TablePane>
+</main:MainWindow>
