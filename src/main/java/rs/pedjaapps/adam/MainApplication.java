@@ -7,6 +7,8 @@ import org.apache.pivot.wtk.DesktopApplicationContext;
 import org.apache.pivot.wtk.Display;
 import org.apache.pivot.wtk.Window;
 
+import java.io.IOException;
+
 /**
  * Created by pedja on 22.9.14. 15.28.
  * This class is part of the adam
@@ -14,9 +16,18 @@ import org.apache.pivot.wtk.Window;
  */
 public class MainApplication implements Application
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
         DesktopApplicationContext.main(MainApplication.class, args);
+
+        /*ADBManager manager = ADBManager.getInstance();
+        List<String> devices = manager.devices();
+        for(String s : devices)
+        {
+            System.out.println(s + "\n");
+        }
+
+        System.out.println("exit");*/
     }
 
     private Window window;

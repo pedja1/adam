@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package JDroidLib.enums;
+package rs.pedjaapps.adam;
 
 
 /**
@@ -24,7 +24,20 @@ package JDroidLib.enums;
  */
 public enum DeviceState {
 
-    DEVICE, OFFLINE, RECOVERY, FASTBOOT, UNKNOWN, BOOTLOADER, HOST, SIDELOAD, NOPERM, UNAUTHORIZED;
+    device, offline, recovery, fastboot, unknown, bootloader, host, sideload, noperm, unauthorized;
+
+    public static DeviceState fromString(String value)
+    {
+        if(value == null)return unknown;
+        for(DeviceState state : values())
+        {
+            if(state.toString().equals(value.toLowerCase()))
+            {
+                return state;
+            }
+        }
+        return unknown;
+    }
 
     //this is taken from "transport.c" from adb source ("https://github.com/android/platform_system_core/blob/master/adb/transport.c")
 
@@ -39,40 +52,6 @@ public enum DeviceState {
      case CS_UNAUTHORIZED: return "unauthorized";
      default: return "unknown";
      }*/
-    
-    /**
-     * Convert device state from string to one of the enum constants
-     *
-     * @param state state of the device as string
-     *
-     * @return state of the device represented as on of the constants from
-     *         {@link JDroidLib.enums.DeviceState}
-     *
-     */
-    public static DeviceState getState(String state) {
-        switch (state.toLowerCase()) {
-            case "device":
-                return DEVICE;
-            case "offline":
-                return OFFLINE;
-            case "recovery":
-                return RECOVERY;
-            case "fastboot":
-                return FASTBOOT;
-            case "bootloader":
-                return BOOTLOADER;
-            case "host":
-                return HOST;
-            case "sideload":
-                return SIDELOAD;
-            case "no permissions":
-                return NOPERM;
-            case "unauthorized":
-                return UNAUTHORIZED;
-            default:
-                return UNKNOWN;
-        }
-    }
 
     /**
      * Get human readable representation of the device state
@@ -82,25 +61,25 @@ public enum DeviceState {
      *
      * @return
      */
-    public static String getState(DeviceState state) {
+    public static String toString(DeviceState state) {
         switch (state) {
-            case DEVICE:
+            case device:
                 return "DEVICE";
-            case OFFLINE:
+            case offline:
                 return "OFFLINE";
-            case RECOVERY:
+            case recovery:
                 return "RECOVERY";
-            case FASTBOOT:
+            case fastboot:
                 return "FASTBOOT";
-            case BOOTLOADER:
+            case bootloader:
                 return "BOOTLOADER";
-            case HOST:
+            case host:
                 return "HOST";
-            case SIDELOAD:
+            case sideload:
                 return "SIDELOAD";
-            case NOPERM:
+            case noperm:
                 return "NO PERMISSIONS";
-            case UNAUTHORIZED:
+            case unauthorized:
                 return "UNAUTHORIZED";
             default:
                 return "UNKNOWN";
